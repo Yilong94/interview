@@ -2,6 +2,7 @@ import unittest
 
 from linked_list import *
 
+
 # Creates a linked list [1,2,3]
 def initialise_linked_list():
     node1 = LinkedListNode(1)
@@ -11,6 +12,7 @@ def initialise_linked_list():
     node2.next = node3
     linked_list = LinkedList(node1)
     return linked_list
+
 
 class TestLinkedList(unittest.TestCase):
     # Read
@@ -35,13 +37,13 @@ class TestLinkedList(unittest.TestCase):
         linked_list = initialise_linked_list()
         node = linked_list.search(2)
         self.assertEqual(node.value, 2)
-    
+
     def test_search_node_with_value_not_exist(self):
         linked_list = initialise_linked_list()
         node = linked_list.search(10)
         self.assertEqual(node, None)
 
-    # Insertion 
+    # Insertion
     def test_insert_node_at_first_index(self):
         linked_list = initialise_linked_list()
         linked_list.insert(0, 10)
@@ -100,5 +102,6 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(linked_list.read(1), 2)
         self.assertEqual(linked_list.read(2), 3)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

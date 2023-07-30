@@ -14,4 +14,3 @@ class Stack:
         if len(self.stack) == 0:
             return None
         return self.stack[-1]
-
