@@ -6,6 +6,8 @@ class Stack:
         self.stack.append(x)
 
     def pop(self):
+        if len(self.stack) == 0:
+            return None
         return self.stack.pop()
 
     def peek(self):

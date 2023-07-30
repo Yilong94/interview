@@ -25,9 +25,13 @@ class TestStack(unittest.TestCase):
         stack.pop()
         self.assertEqual(stack.pop(), 1)
 
-    def test_should_return_none_when_no_items(self):
+    def test_should_return_none_when_no_items_to_peek(self):
         stack = Stack()
         self.assertEqual(stack.peek(), None)
+
+    def test_should_return_none_when_no_items_to_dequeue(self):
+        stack = Stack()
+        self.assertEqual(stack.pop(), None)
 
 if __name__ == "__main__":
     unittest.main()
