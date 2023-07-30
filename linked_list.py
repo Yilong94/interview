@@ -3,21 +3,22 @@ class LinkedListNode:
         self.value = value
         self.next = None
 
+
 class LinkedList:
     def __init__(self, first_node):
         self.first_node = first_node
-    
+
     def read(self, index):
         current_index = 0
         current_node = self.first_node
-        
+
         while current_index != index:
-            # Index is out of bound
-            if current_node is None:
-                return None
-            
             current_node = current_node.next
             current_index += 1
+
+            # End of linkedlist reached - index is out of bound
+            if current_node is None:
+                return None
 
         return current_node.value
 
@@ -30,16 +31,16 @@ class LinkedList:
 
             if current_node.next is None:
                 break
-            
+
             current_node = current_node.next
 
     def insert(self, index, value):
         new_node = LinkedListNode(value)
-        
+
         if index == 0:
             new_node.next = self.first_node
             self.first_node = new_node
-            return    
+            return
 
         current_index = 0
         current_node = self.first_node
@@ -68,11 +69,11 @@ class LinkedList:
         # Iterate until we find the node just before where new node will be inserted
         # since this node has reference to itself and next node (and next node)
         while current_index != index - 1:
-            # Index out of bound
+            current_node = current_node.next
+            current_index += 1
+
+            # End of linkedlist reached - index is out of bound
             if current_node is None:
                 return
 
-            current_node = current_node.next
-            current_index += 1
-        
         current_node.next = current_node.next.next

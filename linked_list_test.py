@@ -91,6 +91,7 @@ class TestLinkedList(unittest.TestCase):
         linked_list.delete(2)
         self.assertEqual(linked_list.read(0), 1)
         self.assertEqual(linked_list.read(1), 2)
+        self.assertEqual(linked_list.read(2), None)
 
     def test_delete_node_at_out_of_bound_index(self):
         linked_list = initialise_linked_list()
