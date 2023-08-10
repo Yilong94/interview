@@ -35,5 +35,42 @@ class Heap:
             current_index = parent_index
             parent_index = self.parent(current_index)
 
+    def delete(self):
+        if len(self.data) == 0:
+            return None
+
+        deleted = self.data[0]
+
+        new_data = self.data
+        new_data[0] = new_data[len(new_data) - 1]
+        new_data = new_data[: len(new_data) - 1]
+
+        current_index = 0
+        while (
+            self.left_child(current_index) < len(new_data)
+            and self.right_child(current_index) < len(new_data)
+            and (
+                new_data[current_index] < new_data[self.left_child(current_index)]
+                or new_data[current_index] < new_data[self.right_child(current_index)]
+            )
+        ):
+            if (
+                new_data[self.left_child(current_index)]
+                > new_data[self.right_child(current_index)]
+            ):
+                new_data[self.left_child(current_index)], new_data[current_index] = (
+                    new_data[current_index],
+                    new_data[self.left_child(current_index)],
+                )
+                current_index = self.left_child(current_index)
+            else:
+                new_data[self.right_child(current_index)], new_data[current_index] = (
+                    new_data[current_index],
+                    new_data[self.right_child(current_index)],
+                )
+                current_index = self.left_child(current_index)
+        self.data = new_data
+        return deleted
+
     def read(self):
         return self.data
