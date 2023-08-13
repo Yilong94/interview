@@ -1,3 +1,4 @@
+# At the end of a word, there should be a node with such an entry: {"*": None}
 class TrieNode:
     def __init__(self):
         self.value = {}
