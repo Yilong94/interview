@@ -20,17 +20,6 @@ class Trie:
 
         current.value["*"] = None
 
-    def search(self, word):
-        current = self.root
-
-        for char in word:
-            if char not in current.value:
-                return None
-
-            current = current.value[char]
-
-        return current
-
     def autocomplete(self, word):
         current = self.root
 
