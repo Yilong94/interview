@@ -18,28 +18,25 @@ def dfs_recursive(vertex, visited):
 
 
 def dfs_iterative(vertex):
+    traversal_order = []
     stack = Stack()
-    visited = []
+    visited = {}
 
     stack.push(vertex)
-    while len(stack.stack) != 0:
+
+    while stack.peek():
+        print([i.value for i in stack.stack])
         current = stack.pop()
 
-        # possibility that stack can contain duplicate values
-        # if value is vistied, we ignore and go to next item in stack since
-        # its neighbours are already visited anyway
         if current.value in visited:
             continue
 
-        visited.append(current.value)
+        traversal_order.append(current.value)
+        visited[current.value] = True
 
         for neighbour in sorted(
             current.neighbours, key=lambda vertex: vertex.value, reverse=True
         ):
-            # if value is visited, we do not push into stack
-            if neighbour.value in visited:
-                continue
-
             stack.push(neighbour)
 
-    return visited
+    return traversal_order
